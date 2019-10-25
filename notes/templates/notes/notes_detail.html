@@ -1,0 +1,33 @@
+{% extends "notes/base.html" %} {% load markdownify %} {% block title %}Notes - {{ Notes.title }}{% endblock %} {% load static %} {% block head %}
+<script src="{% static 'js/notes_detail.js' %}" defer></script>
+{% endblock %} {% block content %}
+<h3>{{ notes.title }}
+    <small>
+      <a href="{% url 'notes_edit' pk=notes.pk %}">Edit</a>
+      <a href="{% url 'notes_delete' pk=notes.pk %}" class="text-danger">Delete</a>
+    </small>
+</h3>
+{% if notes.description %}
+<p>
+    {{ notes.description }}
+</p>
+{% endif %}
+<ol>
+    {% for item in notes.items.all %}
+    <li class="notes-item" id="notes-list-{{ item.pk }}">
+        <span class="notes-item-body">{{ item.body|markdownify }}</span>
+        <form action="{% url 'notes_items_edit' pk=item.pk %}" method="POST" class="item-edit-form" id="item-edit-form-{{ item.pk }}">
+            {% csrf_token %}
+            <input class="item-edit-input" type="text" name="body" value="{{ item.body }}">
+        </form>
+        <a class="item-edit-link" href="#" data-item-pk="{{ item.pk }}">Edit</a>
+    </li>
+    {% endfor %}
+</ol>
+
+<h4>Add a new item to your notes</h4>
+<form action="" method="POST">
+    {% csrf_token %} {{ item_form }}
+    <button type="submit">Add item</button>
+</form>
+{% endblock %}
