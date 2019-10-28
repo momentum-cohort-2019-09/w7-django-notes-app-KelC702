@@ -5,9 +5,9 @@ class NotesForm(forms.ModelForm):
 
     class Meta:
         model = Notes
-        fields = ['title', 'description']
+        fields = ['title', 'body']
 
-class NotesItem(forms.ModelForm):
+class NotesItemForm(forms.ModelForm):
 
     class Meta:
         model = NotesItem

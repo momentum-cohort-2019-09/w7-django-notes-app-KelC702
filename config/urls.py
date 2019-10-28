@@ -21,11 +21,11 @@ from notes import views
 urlpatterns = [
     path('', views.notes_list, name='notes_list'),
     path('notes/<int:pk>/', views.notes_detail, name='notes_detail'),
-    path('notes/add_notes/', views.add_notes, name='add_notes'),
-    path('notes/<int:pk>/edit', views.edit_notes, name='edit_notes'),
-    path('notes/<int:pk>/delete', views.delete_notes, name='delete_notes'),
-    path('notes/search_notes', views.search_notes, name='search_notes'),
-    path('notes/sort_notes', views.sort_notes, name='sort_notes'),
+    path('notes/create_notes/', views.notes_create, name='notes_create'),
+    path('notes/<int:pk>/edit', views.notes_edit, name='notes_edit'),
+    path('notes/<int:pk>/delete', views.notes_delete, name='notes_delete'),
+    # path('notes/search_notes', views.search_notes, name='search_notes'),
+    # path('notes/sort_notes', views.sort_notes, name='sort_notes'),
     path('admin/', admin.site.urls),
  
 ]

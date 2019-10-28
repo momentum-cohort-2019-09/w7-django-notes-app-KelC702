@@ -32,7 +32,7 @@ def notes_detail(request, pk):
         "notes": notes,
     })
 
-def checklists_create(request):
+def notes_create(request):
     if request.method == "POST":  # form was submitted
         form = NotesForm(request.POST)
         if form.is_valid():
