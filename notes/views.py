@@ -36,9 +36,34 @@ def notes_create(request):
     if request.method == "POST":  # form was submitted
         form = NotesForm(request.POST)
         if form.is_valid():
-            notes = form.save()
-            return redirect(to=notes)
+             notes = form.save()
+        return redirect(to=notes)
     else:
         form = NotesForm()
 
-    return render(request, "notes/notes_create.html", {"form": form})
+        return render(request, "notes/notes_create.html", {"form": form})
+
+   
+def notes_edit(request, pk):
+       notes = get_object_or_404(Notes, pk=pk)
+
+    if request.method =="POST":
+        form = NotesForm(instance=note, data=request.POST)
+        if form.is_valid():
+             notes = form.save()
+       return redirect(to="notes_list")
+    else:
+       form = NotesForm()
+
+    return render(request, "notes/notes_list.html", {"form": form})
+
+def notes_delete(request, pk):
+       note = get_object_or_404(Notes, pk=pk)
+    if request.method =="POST":
+       notes= form.delete()
+    return redirect(to="notes_list")
+
+    else:
+       form = NotesForm()
+
+    return render(request, "notes/notes_list.html", {"form": form})
