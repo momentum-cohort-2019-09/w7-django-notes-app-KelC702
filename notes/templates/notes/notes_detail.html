@@ -1,4 +1,9 @@
-{% extends "notes/base.html" %} {% load markdownify %} {% block title %}Notes - {{ Notes.title }}{% endblock %} {% load static %} {% block head %}
+{% extends "notes/base.html" %} 
+{% load markdownify %}
+{% load stactic %}
+ 
+{% block title %}Notes - {{ Notes.title }}{% endblock %} 
+ {% block head %}
 <script src="{% static 'js/notes_detail.js' %}" defer></script>
 {% endblock %} {% block content %}
 <h3>{{ notes.title }}

@@ -1,17 +1,20 @@
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from notes.models import Notes
 from notes.forms import NotesForm, NotesItemForm
 
+
 # Create your views here.
+
+
 def notes_list(request):
     notes = Notes.objects.all()
     return render(request, "notes/notes_list.html", {
         "notes": notes,
     })
 
+
 def notes_detail(request, pk):
-    notes = get_object_or_404.objects.get(pk=pk)
-    
+    notes = Notes.objects.get(pk=pk)
     if request.method == "POST":
         notes_item_form = NotesItemForm(request.POST)
         if notes_item_form.is_valid():
@@ -32,38 +35,41 @@ def notes_detail(request, pk):
         "notes": notes,
     })
 
+
 def notes_create(request):
     if request.method == "POST":  # form was submitted
         form = NotesForm(request.POST)
         if form.is_valid():
-             notes = form.save()
+            notes = form.save()
         return redirect(to=notes)
     else:
         form = NotesForm()
 
         return render(request, "notes/notes_create.html", {"form": form})
 
-   
-def notes_edit(request, pk):
-       notes = get_object_or_404(Notes, pk=pk)
 
-    if request.method =="POST":
+def notes_edit(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+
+    if request.method == "POST":
         form = NotesForm(instance=note, data=request.POST)
         if form.is_valid():
-             notes = form.save()
-       return redirect(to="notes_list")
+            note = form.save()
+        return redirect(to="notes_list")
     else:
-       form = NotesForm()
+        form = NotesForm()
 
     return render(request, "notes/notes_list.html", {"form": form})
 
-def notes_delete(request, pk):
-       note = get_object_or_404(Notes, pk=pk)
-    if request.method =="POST":
-       notes= form.delete()
-    return redirect(to="notes_list")
 
+def notes_delete(request, pk):
+    note = get_object_or_404(Notes, pk=pk)
+
+    if request.method == "POST":
+        note.delete()
+
+        return redirect(to="notes_list")
     else:
-       form = NotesForm()
+        form = NotesForm()
 
     return render(request, "notes/notes_list.html", {"form": form})

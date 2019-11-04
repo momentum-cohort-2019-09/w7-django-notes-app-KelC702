@@ -25,10 +25,9 @@ urlpatterns = [
     path('notes/create_notes/', views.notes_create, name='notes_create'),
     path('notes/<int:pk>/edit', views.notes_edit, name='notes_edit'),
     path('notes/<int:pk>/delete', views.notes_delete, name='notes_delete'),
-    path('notes/results', views.search_result, name="search_result"),
+    # path('notes/results', views.search_result, name="search_result"),
     # path('notes/search_notes', views.search_notes, name='search_notes'),
-    
-    
- 
-]
 
+
+
+]
