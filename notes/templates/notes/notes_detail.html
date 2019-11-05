@@ -8,8 +8,8 @@
 {% endblock %} {% block content %}
 <h3>{{ notes.title }}
     <small>
-      <a href="{% url 'notes_edit' pk=notes.pk %}">Edit</a>
-      <a href="{% url 'notes_delete' pk=notes.pk %}" class="text-danger">Delete</a>
+      <a href="{% url 'notes_edit' pk=note.pk %}">Edit</a>
+      <a href="{% url 'notes_delete' pk=note.pk %}" class="text-danger" method="POST">Delete</a>
     </small>
 </h3>
 {% if notes.description %}
@@ -18,10 +18,10 @@
 </p>
 {% endif %}
 <ol>
-    {% for item in notes.items.all %}
+    {% for item in note.items.all %}
     <li class="notes-item" id="notes-list-{{ item.pk }}">
         <span class="notes-item-body">{{ item.body|markdownify }}</span>
-        <form action="{% url 'notes_items_edit' pk=item.pk %}" method="POST" class="item-edit-form" id="item-edit-form-{{ item.pk }}">
+        <form action="{% url 'notes_edit' pk=item.pk %}" method="POST" class="item-edit-form" id="item-edit-form-{{ item.pk }}">
             {% csrf_token %}
             <input class="item-edit-input" type="text" name="body" value="{{ item.body }}">
         </form>
