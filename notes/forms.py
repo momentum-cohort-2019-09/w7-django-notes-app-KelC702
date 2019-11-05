@@ -8,8 +8,9 @@ class NotesForm(forms.ModelForm):
         model = Notes
         fields = ['title', 'body']
 
-# class NotesItemForm(forms.ModelForm):
 
-    # class Meta:
-    #     model = NotesItem
-    #     fields = ['body']
+class NotesItemForm(forms.ModelForm):
+
+    class Meta:
+        model = NotesItem
+        fields = ['body']
