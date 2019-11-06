@@ -1,5 +1,4 @@
- {% extends "notes/base.html" %} 
- {% block content %}
+ {% extends "notes/base.html" %} {% block content %}
 
 <ul id="notes">
     {% for note in notes %}
@@ -10,7 +9,7 @@
     </li>
     {% endfor %}
 </ul>
-  <p>
-  <a href="{%  url 'notes_create'%}">Create a new note</a>
- </p>
+<p>
+    <a href="{%  url 'notes_create'%}">Create a new note</a>
+</p>
 {% endblock %}

@@ -1,9 +1,4 @@
-{% extends "notes/base.html" %} 
-{% load markdownify %}
-{% load static %}
- 
-{% block title %}Notes - {{ Notes.title }}{% endblock %} 
- {% block head %}
+{% extends "notes/base.html" %} {% load markdownify %} {% load static %} {% block title %}Notes - {{ Notes.title }}{% endblock %} {% block head %}
 <script src="{% static 'js/notes_detail.js' %}" defer></script>
 {% endblock %} {% block content %}
 <h3>{{ notes.title }}
@@ -32,8 +27,6 @@
 
 <h4>Add a new item to your notes</h4>
 <form action="" method="POST">
-    {% csrf_token %} 
-    {{ item_form }}
+    {% csrf_token %} {{ item_form }}
     <button type="submit">Add item</button>
 </form>
-{% endblock %}

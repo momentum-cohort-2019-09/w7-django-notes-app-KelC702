@@ -19,12 +19,12 @@ from django.urls import include, path
 from notes import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.notes_list, name='notes_list'),
     path('notes/<int:pk>/', views.notes_detail, name='notes_detail'),
     path('notes/new/', views.notes_create, name='notes_create'),
     path('notes/<int:pk>/edit', views.notes_edit, name='notes_edit'),
     path('notes/<int:pk>/delete', views.notes_delete, name='notes_delete'),
+    path('admin/', admin.site.urls),
     # path('notes/results', views.search_result, name="search_result"),
     # path('notes/search_notes', views.search_notes, name='search_notes'),
 
