@@ -64,6 +64,7 @@ def notes_edit(request, pk):
 
 def notes_delete(request, pk):
     note = get_object_or_404(Notes, pk=pk)
+    breakpoint()
 
     if request.method == "POST":
         note.delete()
