@@ -1,5 +1,4 @@
-{% load static %}
-{% comment %} {% load mardownify %} {% endcomment %}
+{% load static %} {% comment %} {% load mardownify %} {% endcomment %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +18,7 @@
         <div class="page-header bg-primary">
             <h1><a class="text-light" href="/">Notes</a></h1>
         </div>
-        {% block content %} 
-        {% endblock %}
+        {% block content %} {% endblock %}
     </div>
 </body>
 
